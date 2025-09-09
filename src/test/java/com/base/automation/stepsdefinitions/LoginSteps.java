@@ -1,7 +1,9 @@
 package com.base.automation.stepsdefinitions;
 
 import com.base.automation.drivers.DriverFactory;
+import com.base.automation.hooks.AppiumHooks;
 import com.base.automation.tasks.Login;
+import io.appium.java_client.android.AndroidDriver;
 import io.cucumber.java.After;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -13,11 +15,12 @@ import org.openqa.selenium.WebDriver;
 public class LoginSteps {
 
     private Actor tester;
-    WebDriver hisMobileDevice;
 
     @Given("el usuario abre la aplicación")
     public void abrirApp() throws Exception {
-        hisMobileDevice = DriverFactory.createDriver();
+        AndroidDriver hisMobileDevice = DriverFactory.createDriver();
+        AppiumHooks.setDriver(hisMobileDevice);
+
         tester = Actor.named("Tester");
         tester.can(BrowseTheWeb.with(hisMobileDevice));
     }

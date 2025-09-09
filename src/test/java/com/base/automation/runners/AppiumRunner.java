@@ -7,7 +7,7 @@ import org.junit.runner.RunWith;
 @RunWith(CucumberWithSerenity.class)
 @CucumberOptions(
         features = "src/test/resources/features",
-        glue = "com.base.automation.stepsdefinitions",
+        glue = {"com.base.automation.stepsdefinitions", "com.base.automation.hooks"}, // Añadir hooks
         plugin = {"pretty"}
 )
 public class AppiumRunner {
