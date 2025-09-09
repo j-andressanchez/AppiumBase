@@ -4,6 +4,8 @@ import com.base.automation.drivers.DriverFactory;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
+import net.serenitybdd.screenplay.actors.OnStage;
+import net.serenitybdd.screenplay.actors.OnlineCast;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,6 +18,7 @@ public class AppiumHooks {
     @Before
     public void setUp(Scenario scenario) {
         logger.info("Iniciando escenario: {}", scenario.getName());
+        OnStage.setTheStage(new OnlineCast());
     }
 
     @After(order = 0)
@@ -26,7 +29,6 @@ public class AppiumHooks {
             try {
                 if (scenario.isFailed()) {
                     logger.error("Escenario falló: {}", scenario.getName());
-                    // Aquí podrías capturar screenshot
                 }
 
                 logger.info("Cerrando aplicación para escenario: {}", scenario.getName());

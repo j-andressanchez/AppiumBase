@@ -23,11 +23,9 @@ public class DriverFactory {
                 .setPlatformName("Android")
                 .setApp(Paths.get("src/test/resources/apk/SauceLabs.apk").toAbsolutePath().toString())
                 .setAutomationName("UiAutomator2")
-                .setAppWaitActivity("com.swaglabsmobileapp.MainActivity")
-                .setAppPackage("com.swaglabsmobileapp")
-                .setAppActivity("com.swaglabsmobileapp.MainActivity")
+                .setAppWaitActivity("*")
                 .setNoReset(false)
-                .setFullReset(false)
+                .setFullReset(true)
                 .setAutoGrantPermissions(true)
                 .setNewCommandTimeout(Duration.ofSeconds(300))
                 .setAppWaitDuration(Duration.ofSeconds(30));
